@@ -1,17 +1,16 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: monitoring-app
+  name: networking-kust
   namespace: flux-system
 spec:
   dependsOn:
     - name: gitrepos
-    - name: networking
   interval: 5m
   retryInterval: 30s
   sourceRef:
     kind: GitRepository
-    name: monitoring-repo
+    name: networking-repo
     namespace: flux-system
-  path: ./monitoring
+  path: ./
   prune: true

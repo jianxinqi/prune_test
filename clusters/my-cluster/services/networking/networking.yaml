@@ -1,17 +1,14 @@
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: apps
+  name: networking
   namespace: flux-system
 spec:
-  dependsOn:
-    - name: gitrepos
-    - name: helmrepos
-    - name: networking
+  dependsOn: []
   interval: 60m
   retryInterval: 2m
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./apps
+  path: ./networking
   prune: true
