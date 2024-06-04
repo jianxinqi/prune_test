@@ -1,0 +1,16 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+kind: Kustomization
+metadata:
+  name: monitoring-app
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: gitrepos
+  interval: 5m
+  retryInterval: 30s
+  sourceRef:
+    kind: GitRepository
+    name: monitoring-repo
+    namespace: flux-system
+  path: ./monitoring
+  prune: true
